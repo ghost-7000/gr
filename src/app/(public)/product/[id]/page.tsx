@@ -121,11 +121,11 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 </div>
 
                 {/* Product Detail Card */}
-                <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-12 shadow-xl shadow-black/5 border border-[var(--color-border)] overflow-hidden">
+                <div className="bg-white dark:bg-slate-900 rounded-3xl md:rounded-[3rem] p-5 md:p-12 shadow-xl shadow-black/5 border border-[var(--color-border)] overflow-hidden">
                     <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
                         {/* Image Gallery Mockup */}
                         <div className="flex-1">
-                            <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-border)] group">
+                            <div className="relative aspect-square rounded-2xl md:rounded-[2rem] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-border)] group shadow-inner">
                                 <Image
                                     src={getProductImageUrl(product.image)}
                                     alt={product.name}

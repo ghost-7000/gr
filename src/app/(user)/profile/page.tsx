@@ -83,8 +83,8 @@ export default function ProfilePage() {
                     <p className="text-[var(--color-text-light)] font-bold">إدارة معلومات حسابك وكلمة المرور</p>
                 </div>
 
-                <div className="bg-[var(--color-surface)] rounded-[2.5rem] shadow-xl shadow-black/5 border border-[var(--color-border)] overflow-hidden">
-                    <div className="p-8 md:p-12">
+                <div className="bg-[var(--color-surface)] rounded-3xl md:rounded-[2.5rem] shadow-xl shadow-black/5 border border-[var(--color-border)] overflow-hidden">
+                    <div className="p-5 md:p-12">
                         <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-12">
                             <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-light)] flex items-center justify-center text-white text-4xl font-black shadow-2xl shadow-green-500/20">
                                 {user.name.charAt(0).toUpperCase()}

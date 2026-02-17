@@ -121,20 +121,20 @@ export default function OrdersPage() {
                             } catch (e) { }
 
                             return (
-                                <div key={order.id} className="bg-[var(--color-surface)] rounded-[2.5rem] overflow-hidden border border-[var(--color-border)] shadow-sm hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 group">
-                                    <div className="p-6 md:p-10">
+                                <div key={order.id} className="bg-[var(--color-surface)] rounded-3xl md:rounded-[2.5rem] overflow-hidden border border-[var(--color-border)] shadow-sm hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 group">
+                                    <div className="p-5 md:p-10">
                                         <div className="flex flex-col lg:flex-row gap-8">
                                             <div className="flex-1">
-                                                <div className="flex flex-wrap items-center gap-4 mb-8">
-                                                    <div className="px-6 py-2.5 bg-[var(--color-surface-alt)] rounded-2xl border border-[var(--color-border)] text-[var(--color-text)] font-black text-xl shadow-inner">
+                                                <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-6 md:mb-8">
+                                                    <div className="px-4 md:px-6 py-2 md:py-2.5 bg-[var(--color-surface-alt)] rounded-xl md:rounded-2xl border border-[var(--color-border)] text-[var(--color-text)] font-black text-sm md:text-xl shadow-inner">
                                                         طلب #{order.id}
                                                     </div>
-                                                    <span className={`px-4 py-2 rounded-full text-xs font-black flex items-center gap-2 ${St.color} border border-current opacity-90`}>
-                                                        <St.icon size={16} />
+                                                    <span className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-black flex items-center gap-1.5 md:gap-2 ${St.color} border border-current opacity-90`}>
+                                                        <St.icon size={14} />
                                                         {St.label}
                                                     </span>
-                                                    <div className="text-[var(--color-text-lighter)] text-xs font-black flex items-center gap-2 mr-auto lg:mr-0 opacity-80">
-                                                        <Calendar size={14} />
+                                                    <div className="text-[var(--color-text-lighter)] text-[10px] md:text-xs font-black flex items-center gap-1.5 md:gap-2 mr-auto lg:mr-0 opacity-80">
+                                                        <Calendar size={12} />
                                                         {new Date(order.created_at || order.placed_on).toLocaleDateString('ar-OM', { dateStyle: 'long' })}
                                                     </div>
                                                 </div>
