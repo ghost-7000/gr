@@ -76,13 +76,16 @@ export default function Header() {
             <div className="container mx-auto px-4 h-full flex items-center justify-between">
 
                 {/* LOGO */}
-                <Link href={user?.role === 'admin' ? '/admin' : '/'} className="relative flex-shrink-0 flex items-center justify-start h-full" style={{ width: '200px' }}>
+                <Link
+                    href={user?.role === 'admin' ? '/admin' : '/'}
+                    className="relative flex-shrink-0 flex items-center justify-start h-full w-[130px] sm:w-[160px] md:w-[200px]"
+                >
                     <Image
                         src="/images/logo.png"
                         alt="GRMC Logo"
                         fill
-                        className="object-contain object-right dark:brightness-125"
-                        style={{ transform: 'scale(1.2)', transformOrigin: 'right center' }}
+                        className="object-contain object-right dark:brightness-125 transition-all"
+                        style={{ transform: 'scale(1.15)', transformOrigin: 'right center' }}
                         priority
                     />
                 </Link>

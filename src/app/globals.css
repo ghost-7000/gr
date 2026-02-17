@@ -95,7 +95,7 @@
 
   /* ── Layout ──────────────────────────────── */
   .container {
-    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full;
+    @apply mx-auto px-3 sm:px-6 lg:px-8 max-w-7xl w-full;
   }
 
   /* Prevent horizontal scroll on mobile */
