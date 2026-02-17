@@ -222,16 +222,16 @@ export default function Header() {
 
             {/* MOBILE MENU */}
             {isMenuOpen && (
-                <div className="fixed inset-0 top-[80px] bg-[var(--color-surface)] z-40 overflow-y-auto pb-10 flex flex-col animate-fade-in transition-colors duration-300">
-                    <div className="p-6 space-y-3">
+                <div className="fixed inset-0 top-[80px] bg-[var(--color-surface)] z-50 overflow-y-auto pb-10 flex flex-col animate-fade-in transition-colors duration-300">
+                    <div className="p-4 space-y-2">
                         {links.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 onClick={() => setIsMenuOpen(false)}
-                                className={`flex items-center gap-4 p-5 rounded-2xl font-black text-lg transition-all border ${pathname === link.href
-                                    ? 'bg-green-500/10 text-[var(--color-primary-light)] border-green-500/20 shadow-lg shadow-green-500/5'
-                                    : 'text-[var(--color-text)] bg-[var(--color-surface-alt)] border-[var(--color-border)]'
+                                className={`flex items-center gap-3 p-3.5 rounded-xl font-bold text-base transition-all border ${pathname === link.href
+                                    ? 'bg-green-500/10 text-[var(--color-primary-light)] border-green-500/20 shadow-sm'
+                                    : 'text-[var(--color-text)] bg-[var(--color-surface-alt)] border-[var(--color-border)] hover:bg-[var(--color-surface)]'
                                     }`}
                             >
                                 {link.label}
@@ -239,33 +239,33 @@ export default function Header() {
                         ))}
                     </div>
 
-                    <div className="mt-auto p-6 space-y-4">
+                    <div className="mt-auto p-4 space-y-3 border-t border-[var(--color-border)]">
                         {isLoggedIn && user ? (
-                            <div className="space-y-4">
-                                <div className="flex items-center gap-4 p-5 bg-[var(--color-surface-alt)] rounded-3xl border border-[var(--color-border)] shadow-sm">
-                                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-light)] flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-3 p-3.5 bg-[var(--color-surface-alt)] rounded-2xl border border-[var(--color-border)] shadow-sm">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-light)] flex items-center justify-center text-white font-bold text-lg shadow-md">
                                         {user.name?.charAt(0).toUpperCase()}
                                     </div>
-                                    <div className="flex-1">
-                                        <p className="font-black text-[var(--color-text)] text-lg leading-tight">{user.name}</p>
-                                        <p className="text-xs text-[var(--color-text-light)] font-medium mt-1">{user.email}</p>
+                                    <div className="flex-1 overflow-hidden">
+                                        <p className="font-bold text-[var(--color-text)] text-sm truncate">{user.name}</p>
+                                        <p className="text-xs text-[var(--color-text-light)] truncate mt-0.5">{user.email}</p>
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-3">
-                                    <Link href="/profile" onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center justify-center gap-3 p-5 font-black text-[var(--color-text)] bg-[var(--color-surface-alt)] rounded-3xl border border-[var(--color-border)] hover:border-[var(--color-primary-light)] transition-all">
-                                        <User size={24} className="text-[var(--color-primary-light)]" />
+                                <div className="grid grid-cols-2 gap-2">
+                                    <Link href="/profile" onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center justify-center gap-2 p-3.5 font-bold text-[var(--color-text)] bg-[var(--color-surface-alt)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-primary-light)] transition-all">
+                                        <User size={20} className="text-[var(--color-primary-light)]" />
                                         <span className="text-xs">الملف الشخصي</span>
                                     </Link>
 
                                     {user.role === 'admin' ? (
-                                        <Link href="/admin" onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center justify-center gap-3 p-5 font-black text-[var(--color-text)] bg-[var(--color-surface-alt)] rounded-3xl border border-[var(--color-border)] hover:border-purple-500 transition-all">
-                                            <Shield size={24} className="text-purple-500" />
+                                        <Link href="/admin" onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center justify-center gap-2 p-3.5 font-bold text-[var(--color-text)] bg-[var(--color-surface-alt)] rounded-2xl border border-[var(--color-border)] hover:border-purple-500 transition-all">
+                                            <Shield size={20} className="text-purple-500" />
                                             <span className="text-xs">لوحة التحكم</span>
                                         </Link>
                                     ) : (
-                                        <Link href="/orders" onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center justify-center gap-3 p-5 font-black text-[var(--color-text)] bg-[var(--color-surface-alt)] rounded-3xl border border-[var(--color-border)] hover:border-[var(--color-primary-light)] transition-all">
-                                            <Package size={24} className="text-[var(--color-primary-light)]" />
+                                        <Link href="/orders" onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center justify-center gap-2 p-3.5 font-bold text-[var(--color-text)] bg-[var(--color-surface-alt)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-primary-light)] transition-all">
+                                            <Package size={20} className="text-[var(--color-primary-light)]" />
                                             <span className="text-xs">طلباتي</span>
                                         </Link>
                                     )}
@@ -273,14 +273,14 @@ export default function Header() {
 
                                 <button
                                     onClick={() => { logout(); setIsMenuOpen(false); }}
-                                    className="flex items-center justify-center gap-3 p-5 font-black text-red-500 bg-red-500/5 rounded-3xl border border-red-500/10 w-full active:scale-95 transition-all shadow-sm shadow-red-500/5"
+                                    className="flex items-center justify-center gap-2 p-3.5 font-bold text-red-500 bg-red-500/5 rounded-2xl border border-red-500/10 w-full active:scale-95 transition-all text-sm"
                                 >
-                                    <LogOut size={20} /> تسجيل الخروج
+                                    <LogOut size={18} /> تسجيل الخروج
                                 </button>
                             </div>
                         ) : (
-                            <Link href="/login" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-center gap-3 p-6 font-black text-white bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-light)] rounded-3xl shadow-xl shadow-green-500/20 active:scale-95 transition-all text-xl">
-                                <User size={24} /> تسجيل الدخول
+                            <Link href="/login" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-center gap-2 p-4 font-bold text-white bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-light)] rounded-2xl shadow-lg active:scale-95 transition-all text-sm">
+                                <User size={20} /> تسجيل الدخول
                             </Link>
                         )}
                     </div>

@@ -7,18 +7,18 @@ export default function Footer() {
             <div className="container mx-auto px-4">
 
                 {/* Newsletter Bar */}
-                <div className="bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-light)] rounded-2xl p-8 md:p-10 mb-16 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-light)] rounded-2xl p-5 md:p-10 mb-12 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
                     <div className="text-center md:text-right">
-                        <h3 className="text-2xl font-black text-white mb-2">اشترك في النشرة البريدية</h3>
+                        <h3 className="text-xl md:text-2xl font-black text-white mb-2">اشترك في النشرة البريدية</h3>
                         <p className="text-green-100 text-sm">كن أول من يعرف عن منتجاتنا الجديدة والعروض الحصرية</p>
                     </div>
-                    <div className="flex w-full md:w-auto gap-2">
+                    <div className="flex flex-col sm:flex-row w-full md:w-auto gap-2">
                         <input
                             type="email"
                             placeholder="بريدك الإلكتروني"
-                            className="flex-1 md:w-72 px-5 py-3.5 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 outline-none focus:bg-white/25 focus:border-white/40 transition-all"
+                            className="flex-1 md:w-72 px-4 py-2.5 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 outline-none focus:bg-white/25 focus:border-white/40 transition-all text-sm"
                         />
-                        <button className="px-6 py-3.5 rounded-xl bg-[var(--color-gold)] hover:bg-[var(--color-gold-dark)] text-slate-900 font-bold transition-colors whitespace-nowrap">
+                        <button className="px-5 py-2.5 rounded-xl bg-[var(--color-gold)] hover:bg-[var(--color-gold-dark)] text-slate-900 font-bold transition-colors whitespace-nowrap text-sm">
                             اشترك الآن
                         </button>
                     </div>
