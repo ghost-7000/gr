@@ -17,7 +17,7 @@ export default function AboutPage() {
         <div className="flex flex-col min-h-screen -mt-20">
 
             {/* 1. HERO SECTION */}
-            <section className="relative h-[65vh] min-h-[500px] flex items-center justify-center text-center text-white px-4">
+            <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center text-center text-white px-4">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -31,15 +31,15 @@ export default function AboutPage() {
                 </div>
 
                 <div className="relative z-20 max-w-4xl mx-auto animate-fade-in-up">
-                    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm mb-6">
-                        <Leaf size={16} className="text-[#FFD700]" />
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs md:text-sm mb-4 md:mb-6">
+                        <Leaf size={14} className="text-[#FFD700]" />
                         <span>من نحن</span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black mb-6">
+                    <h1 className="text-4xl md:text-7xl font-black mb-4 md:mb-6 leading-tight">
                         إعادة ابتكار
                         <span className="block text-[#FFD700]">الرخام</span>
                     </h1>
-                    <p className="text-xl md:text-2xl leading-relaxed text-white/90">
+                    <p className="text-base md:text-2xl leading-relaxed text-white/90 max-w-xl mx-auto">
                         تحويل المخلفات إلى منتجات ذات قيمة من خلال حلول مستدامة ومبتكرة
                     </p>
                 </div>

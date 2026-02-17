@@ -152,7 +152,8 @@ export default function ContactPage() {
     return (
         <div className="flex flex-col min-h-screen -mt-20">
             {/* HERO */}
-            <section className="relative h-[60vh] flex items-center justify-center text-center text-white">
+            {/* HERO */}
+            <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center text-center text-white px-4">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=2070&auto=format&fit=crop"
@@ -164,27 +165,27 @@ export default function ContactPage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-emerald-900/50 to-slate-900 z-10"></div>
                 </div>
                 <div className="relative z-20 max-w-4xl px-4 animate-fade-in-up">
-                    <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-sm mb-6 font-bold tracking-wide">
-                        <Leaf size={16} className="text-emerald-400" />
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-6 md:py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-xs md:text-sm mb-4 md:mb-6 font-bold tracking-wide">
+                        <Leaf size={14} className="text-emerald-400" />
                         <span>معاً من أجل بيئة عمانية مستدامة</span>
                     </div>
-                    <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight">تواصل <span className="text-[var(--color-gold)]">معنا</span></h1>
-                    <p className="text-xl md:text-2xl opacity-90 font-medium max-w-2xl mx-auto">نحن هنا لخدمتكم، نستقبل استفساراتكم وبلاغاتكم على مدار الساعة لضمان التخلص الآمن من مخلفات الرخام</p>
+                    <h1 className="text-4xl md:text-8xl font-black mb-4 md:mb-6 leading-tight">تواصل <span className="text-[var(--color-gold)]">معنا</span></h1>
+                    <p className="text-base md:text-2xl opacity-90 font-medium max-w-xl mx-auto">نحن هنا لخدمتكم، نستقبل استفساراتكم وبلاغاتكم على مدار الساعة</p>
                 </div>
             </section>
 
-            <section className="py-24 bg-[var(--color-surface-alt)] relative overflow-hidden">
+            <section className="py-12 md:py-24 bg-[var(--color-surface-alt)] relative overflow-hidden">
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-emerald-500/5 blur-[120px] rounded-full"></div>
                 <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gold-500/5 blur-[120px] rounded-full"></div>
 
                 <div className="container mx-auto px-4 max-w-5xl relative z-10">
                     {/* TABS */}
-                    <div className="flex justify-center mb-12 bg-white dark:bg-slate-900 p-2 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-800 max-w-md mx-auto">
-                        <button onClick={() => setActiveTab('contact')} className={`flex-1 py-4 px-8 rounded-2xl font-black transition-all duration-500 ${activeTab === 'contact' ? 'bg-[#2E7D32] text-white shadow-lg rotate-0' : 'text-slate-500 hover:text-[#2E7D32]'}`}>
+                    <div className="flex flex-col sm:flex-row justify-center mb-8 md:mb-12 bg-white dark:bg-slate-900 p-1.5 md:p-2 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-800 max-w-md mx-auto gap-2 sm:gap-0">
+                        <button onClick={() => setActiveTab('contact')} className={`flex-1 py-3 px-6 rounded-2xl font-black transition-all duration-500 text-sm md:text-base ${activeTab === 'contact' ? 'bg-[#2E7D32] text-white shadow-lg rotate-0' : 'text-slate-500 hover:text-[#2E7D32]'}`}>
                             استفسار عام
                         </button>
-                        <button onClick={() => setActiveTab('report')} className={`flex-1 py-4 px-8 rounded-2xl font-black transition-all duration-500 ${activeTab === 'report' ? 'bg-[#FFD700] text-slate-900 shadow-lg rotate-0' : 'text-slate-500 hover:text-amber-500'}`}>
+                        <button onClick={() => setActiveTab('report')} className={`flex-1 py-3 px-6 rounded-2xl font-black transition-all duration-500 text-sm md:text-base ${activeTab === 'report' ? 'bg-[#FFD700] text-slate-900 shadow-lg rotate-0' : 'text-slate-500 hover:text-amber-500'}`}>
                             بلاغ بيئي
                         </button>
                     </div>
@@ -247,7 +248,7 @@ export default function ContactPage() {
                                         </button>
                                     </div>
 
-                                    <div className="h-[450px] rounded-[2.5rem] overflow-hidden border-4 border-slate-50 dark:border-slate-800 shadow-2xl relative z-10">
+                                    <div className="h-[300px] md:h-[450px] rounded-[2.5rem] overflow-hidden border-4 border-slate-50 dark:border-slate-800 shadow-2xl relative z-10">
                                         <ContactMap
                                             coords={coords}
                                             setCoords={setCoords}
