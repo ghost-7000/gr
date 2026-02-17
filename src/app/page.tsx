@@ -75,9 +75,9 @@ export default function HomePage() {
         </div>
 
         {/* Floating decorative elements */}
-        <div className="absolute inset-0 z-15 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-[#FFD700]/5 blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-[#2E7D32]/10 blur-3xl"></div>
+        <div className="absolute inset-0 z-15 overflow-hidden pointer-events-none max-w-[100vw]">
+          <div className="absolute top-20 right-10 w-48 h-48 md:w-64 md:h-64 rounded-full bg-[#FFD700]/5 blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 left-10 w-72 h-72 md:w-96 md:h-96 rounded-full bg-[#2E7D32]/10 blur-3xl"></div>
         </div>
 
         {/* Content */}

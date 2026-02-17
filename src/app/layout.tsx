@@ -65,7 +65,7 @@ export default function RootLayout({
         className="min-h-screen flex flex-col antialiased"
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <AuthProvider>
             <Header />
             <main className="flex-1 pt-20">{children}</main>

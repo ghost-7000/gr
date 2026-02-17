@@ -55,9 +55,16 @@
 }
 
 @layer base {
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
   body {
     @apply bg-[var(--color-surface)] text-[var(--color-text)] font-sans antialiased transition-colors duration-300;
     direction: rtl;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   h1,
