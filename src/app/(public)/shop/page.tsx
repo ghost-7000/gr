@@ -202,7 +202,7 @@ export default function ShopPage() {
                             تم العثور على <span className="font-bold text-[var(--color-text)]">{filteredProducts.length}</span> منتج
                         </p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                             {filteredProducts.length > 0 ? (
                                 filteredProducts.map((product) => (
                                     <ProductCard key={product.id} {...product} />

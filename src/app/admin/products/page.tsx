@@ -174,8 +174,8 @@ export default function AdminProductsPage() {
                 <div className="text-center py-20"><Loader2 className="animate-spin text-green-600 mx-auto" size={40} /></div>
             ) : (
                 <div className="bg-[var(--color-surface)] rounded-[2rem] shadow-sm border border-[var(--color-border)] overflow-hidden">
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-right border-collapse">
+                    <div className="overflow-x-auto overflow-y-hidden custom-scrollbar">
+                        <table className="w-full text-right border-collapse min-w-[800px]">
                             <thead>
                                 <tr className="bg-[var(--color-surface-alt)] border-b border-[var(--color-border)]">
                                     <th className="p-6 font-black text-[var(--color-text)]">الصورة</th>

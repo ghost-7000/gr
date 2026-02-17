@@ -10,6 +10,37 @@ export const metadata: Metadata = {
   title: "GRMC - تحويل مخلفات الرخام إلى تحف فنية",
   description: "شركة رائدة في مجال إعادة تدوير الرخام، نقدم منتجات عالية الجودة صديقة للبيئة بأسعار تنافسية في سلطنة عمان",
   keywords: "GRMC, رخام, إعادة تدوير, صبغ, عمان, عبري, منتجات بيئية",
+  metadataBase: new URL('https://grmc.netlify.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "GRMC - تحويل مخلفات الرخام إلى تحف فنية",
+    description: "شركة رائدة في مجال إعادة تدوير الرخام في سلطنة عمان. منتجات فريدة وصديقة للبيئة.",
+    url: 'https://grmc.netlify.app',
+    siteName: 'GRMC',
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'GRMC Logo',
+      },
+    ],
+    locale: 'ar_OM',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "GRMC - تحويل مخلفات الرخام إلى تحف فنية",
+    description: "شركة رائدة في مجال إعادة تدوير الرخام في سلطنة عمان.",
+    images: ['/images/logo.png'],
+  },
+  icons: {
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
 };
 
 export default function RootLayout({
