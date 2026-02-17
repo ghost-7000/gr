@@ -106,54 +106,30 @@ export default function ProductCard({ id, name, price, image, details, liters }:
             </div>
 
             {/* Content */}
-            <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <h3 className="group-hover:text-[var(--color-primary-light)] transition-colors" style={{
-                    fontSize: '1.1rem', fontWeight: 800,
-                    color: 'var(--color-text)',
-                    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-                    marginBottom: 2,
-                }}>
+            <div className="p-3 md:p-5 flex flex-col gap-2 flex-1">
+                <h3 className="group-hover:text-[var(--color-primary-light)] transition-colors text-sm md:text-lg font-extrabold text-[var(--color-text)] truncate mb-0.5">
                     {name}
                 </h3>
 
                 {details && (
-                    <p style={{
-                        fontSize: '0.85rem', color: 'var(--color-text-light)',
-                        overflow: 'hidden', display: '-webkit-box',
-                        WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',
-                        lineHeight: 1.6,
-                        minHeight: '3em',
-                        marginBottom: '0.5rem'
-                    }}>
+                    <p className="text-xs md:text-sm text-[var(--color-text-light)] line-clamp-2 md:line-clamp-3 leading-relaxed min-h-[2.5em] mb-2">
                         {details}
                     </p>
                 )}
 
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-[var(--color-border)]">
-                    <div style={{
-                        fontSize: '1.25rem', fontWeight: 900,
-                        color: 'var(--color-primary-light)',
-                    }}>
+                <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--color-border)]">
+                    <div className="text-base md:text-xl font-black text-[var(--color-primary-light)]">
                         {price.toFixed(3)}
-                        <span style={{ fontSize: '0.8rem', fontWeight: 500, marginRight: 4 }}>ر.ع</span>
+                        <span className="text-[0.6rem] md:text-xs font-medium mr-1">ر.ع</span>
                     </div>
 
                     <button
                         onClick={handleAddToCart}
-                        style={{
-                            display: 'flex', alignItems: 'center', justifySelf: 'flex-end', gap: 8,
-                            padding: '0.75rem 1.25rem', borderRadius: 12,
-                            background: 'linear-gradient(135deg, var(--color-primary-light), var(--color-primary-lighter))',
-                            color: 'white', fontWeight: 800, fontSize: '0.9rem',
-                            border: 'none', cursor: 'pointer',
-                            transition: 'all 0.3s ease',
-                            boxShadow: '0 4px 12px rgba(27, 94, 32, 0.15)',
-                            position: 'relative',
-                            zIndex: 10
-                        }}
+                        className="flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-5 md:py-3 rounded-xl bg-gradient-to-br from-[var(--color-primary-light)] to-[var(--color-primary-lighter)] text-white font-bold text-xs md:text-sm shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 z-10"
                     >
-                        <ShoppingCart size={16} />
-                        أضف للسلة
+                        <ShoppingCart size={14} className="md:w-4 md:h-4" />
+                        <span className="hidden md:inline">أضف للسلة</span>
+                        <span className="md:hidden">أضف</span>
                     </button>
                 </div>
             </div>

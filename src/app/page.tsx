@@ -171,7 +171,7 @@ export default function HomePage() {
             <div className="w-20 h-1 bg-gradient-to-l from-[var(--color-gold)] to-[var(--color-gold-dark)] mx-auto mt-6 rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
             {featuredProducts.length > 0 ? (
               featuredProducts.map((product) => (
                 <ProductCard key={product.id} {...product} />
