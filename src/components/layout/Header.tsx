@@ -66,163 +66,177 @@ export default function Header() {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMenuOpen]);
+
     if (!mounted) return null;
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-            ? 'bg-[var(--color-surface)]/90 backdrop-blur-xl shadow-2xl shadow-black/5 border-b border-[var(--color-border)]'
-            : 'bg-[var(--color-surface)] border-b border-[var(--color-border)]'
-            }`} style={{ height: '80px' }}>
-            <div className="container mx-auto px-4 h-full flex items-center justify-between">
+        <>
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+                ? 'bg-[var(--color-surface)]/90 backdrop-blur-xl shadow-2xl shadow-black/5 border-b border-[var(--color-border)]'
+                : 'bg-[var(--color-surface)] border-b border-[var(--color-border)]'
+                }`} style={{ height: '80px' }}>
+                <div className="container mx-auto px-4 h-full flex items-center justify-between">
 
-                {/* LOGO */}
-                <Link
-                    href={user?.role === 'admin' ? '/admin' : '/'}
-                    className="relative flex-shrink-0 flex items-center justify-start h-full w-[130px] sm:w-[160px] md:w-[200px]"
-                >
-                    <Image
-                        src="/images/logo.png"
-                        alt="GRMC Logo"
-                        fill
-                        className="object-contain object-right dark:brightness-125 transition-all"
-                        style={{ transform: 'scale(1.15)', transformOrigin: 'right center' }}
-                        priority
-                    />
-                </Link>
+                    {/* LOGO */}
+                    <Link
+                        href={user?.role === 'admin' ? '/admin' : '/'}
+                        className="relative flex-shrink-0 flex items-center justify-start h-full w-[130px] sm:w-[160px] md:w-[200px]"
+                    >
+                        <Image
+                            src="/images/logo.png"
+                            alt="GRMC Logo"
+                            fill
+                            className="object-contain object-right dark:brightness-125 transition-all"
+                            style={{ transform: 'scale(1.15)', transformOrigin: 'right center' }}
+                            priority
+                        />
+                    </Link>
 
-                {/* DESKTOP NAV */}
-                <nav className="hidden lg:flex items-center gap-1">
-                    {links.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className={`relative px-4 py-2 rounded-xl text-[14px] font-black tracking-tight transition-all duration-300 ${pathname === link.href
-                                ? 'text-white bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-light)] shadow-lg shadow-green-500/20'
-                                : 'text-[var(--color-text)] hover:text-[var(--color-primary-light)] hover:bg-[var(--color-surface-alt)]'
-                                }`}
+                    {/* DESKTOP NAV */}
+                    <nav className="hidden lg:flex items-center gap-1">
+                        {links.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={`relative px-4 py-2 rounded-xl text-[14px] font-black tracking-tight transition-all duration-300 ${pathname === link.href
+                                    ? 'text-white bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-light)] shadow-lg shadow-green-500/20'
+                                    : 'text-[var(--color-text)] hover:text-[var(--color-primary-light)] hover:bg-[var(--color-surface-alt)]'
+                                    }`}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </nav>
+
+                    {/* ICONS & ACTIONS */}
+                    <div className="flex items-center gap-2">
+                        {/* Theme Toggle */}
+                        <button
+                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            className="p-2.5 text-[var(--color-text-light)] hover:text-amber-500 transition-all rounded-xl hover:bg-amber-500/10 border border-transparent hover:border-amber-500/20"
+                            title="تبديل الوضع"
                         >
-                            {link.label}
-                        </Link>
-                    ))}
-                </nav>
+                            <Sun size={20} className="hidden dark:block" />
+                            <Moon size={20} className="block dark:hidden" />
+                        </button>
 
-                {/* ICONS & ACTIONS */}
-                <div className="flex items-center gap-2">
-                    {/* Theme Toggle */}
-                    <button
-                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        className="p-2.5 text-[var(--color-text-light)] hover:text-amber-500 transition-all rounded-xl hover:bg-amber-500/10 border border-transparent hover:border-amber-500/20"
-                        title="تبديل الوضع"
-                    >
-                        <Sun size={20} className="hidden dark:block" />
-                        <Moon size={20} className="block dark:hidden" />
-                    </button>
-
-                    {user?.role !== 'admin' && (
-                        <>
-                            <Link href="/wishlist" className="relative p-2.5 text-[var(--color-text-light)] hover:text-red-500 transition-all rounded-xl hover:bg-red-500/10">
-                                <Heart size={20} />
-                                {wishlistCount > 0 && (
-                                    <span className="absolute top-1 right-1 bg-red-500 text-white text-[9px] w-[18px] h-[18px] flex items-center justify-center rounded-full border-2 border-[var(--color-surface)] font-black">
-                                        {wishlistCount}
-                                    </span>
-                                )}
-                            </Link>
-
-                            <Link href="/cart" className="relative p-2.5 text-[var(--color-text-light)] hover:text-[var(--color-primary-light)] transition-all rounded-xl hover:bg-[var(--color-primary)]/5">
-                                <ShoppingCart size={20} />
-                                {cartCount > 0 && (
-                                    <span className="absolute top-1 right-1 bg-[var(--color-primary)] text-white text-[9px] w-[18px] h-[18px] flex items-center justify-center rounded-full border-2 border-[var(--color-surface)] font-black">
-                                        {cartCount}
-                                    </span>
-                                )}
-                            </Link>
-                        </>
-                    )}
-
-                    {/* User Menu */}
-                    <div className="relative hidden sm:block" ref={userMenuRef}>
-                        {isLoggedIn && user ? (
+                        {user?.role !== 'admin' && (
                             <>
-                                <button
-                                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                                    className="flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] hover:border-[var(--color-primary-light)] transition-all"
-                                >
-                                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-light)] flex items-center justify-center text-white text-xs font-black shadow-lg shadow-green-500/10">
-                                        {user.name?.charAt(0).toUpperCase() || 'U'}
-                                    </div>
-                                    <ChevronDown size={14} className={`text-[var(--color-text-light)] transition-transform duration-300 ${isUserMenuOpen ? 'rotate-180' : ''}`} />
-                                </button>
+                                <Link href="/wishlist" className="relative p-2.5 text-[var(--color-text-light)] hover:text-red-500 transition-all rounded-xl hover:bg-red-500/10">
+                                    <Heart size={20} />
+                                    {wishlistCount > 0 && (
+                                        <span className="absolute top-1 right-1 bg-red-500 text-white text-[9px] w-[18px] h-[18px] flex items-center justify-center rounded-full border-2 border-[var(--color-surface)] font-black">
+                                            {wishlistCount}
+                                        </span>
+                                    )}
+                                </Link>
 
-                                {isUserMenuOpen && (
-                                    <div className="absolute left-0 top-full mt-3 w-72 bg-[var(--color-surface)] rounded-[2rem] shadow-2xl border border-[var(--color-border)] py-3 animate-fade-in-down z-50 overflow-hidden">
-                                        <div className="px-6 py-4 bg-[var(--color-surface-alt)]/50 border-b border-[var(--color-border)] mb-2">
-                                            <p className="font-black text-sm text-[var(--color-text)] truncate">{user.name}</p>
-                                            <p className="text-xs text-[var(--color-text-light)] truncate font-medium">{user.email}</p>
-                                        </div>
-
-                                        <div className="px-2 space-y-1">
-                                            <Link
-                                                href="/profile"
-                                                onClick={() => setIsUserMenuOpen(false)}
-                                                className="flex items-center gap-3 px-4 py-3 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-alt)] rounded-2xl transition-all font-bold"
-                                            >
-                                                <User size={18} className="text-[var(--color-primary-light)]" /> تحديث الملف الشخصي
-                                            </Link>
-
-                                            {user.role === 'admin' ? (
-                                                <Link
-                                                    href="/register"
-                                                    onClick={() => setIsUserMenuOpen(false)}
-                                                    className="flex items-center gap-3 px-4 py-3 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-alt)] rounded-2xl transition-all font-bold"
-                                                >
-                                                    <Shield size={18} className="text-purple-500" /> تسجيل مشرف جديد
-                                                </Link>
-                                            ) : (
-                                                <Link
-                                                    href="/orders"
-                                                    onClick={() => setIsUserMenuOpen(false)}
-                                                    className="flex items-center gap-3 px-4 py-3 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-alt)] rounded-2xl transition-all font-bold"
-                                                >
-                                                    <Package size={18} className="text-[var(--color-primary-light)]" /> طلباتي
-                                                </Link>
-                                            )}
-                                        </div>
-
-                                        <div className="border-t border-[var(--color-border)] mt-2 pt-2 px-2">
-                                            <button
-                                                onClick={() => {
-                                                    setIsUserMenuOpen(false);
-                                                    logout();
-                                                }}
-                                                className="flex items-center gap-3 px-4 py-3 text-sm text-red-500 hover:bg-red-500/5 rounded-2xl w-full transition-all font-black"
-                                            >
-                                                <LogOut size={18} /> تسجيل الخروج
-                                            </button>
-                                        </div>
-                                    </div>
-                                )}
+                                <Link href="/cart" className="relative p-2.5 text-[var(--color-text-light)] hover:text-[var(--color-primary-light)] transition-all rounded-xl hover:bg-[var(--color-primary)]/5">
+                                    <ShoppingCart size={20} />
+                                    {cartCount > 0 && (
+                                        <span className="absolute top-1 right-1 bg-[var(--color-primary)] text-white text-[9px] w-[18px] h-[18px] flex items-center justify-center rounded-full border-2 border-[var(--color-surface)] font-black">
+                                            {cartCount}
+                                        </span>
+                                    )}
+                                </Link>
                             </>
-                        ) : (
-                            <Link href="/login" className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-light)] text-white rounded-2xl text-sm font-black hover:shadow-xl hover:shadow-green-500/20 transition-all">
-                                <User size={18} />
-                                دخول
-                            </Link>
                         )}
+
+                        {/* User Menu */}
+                        <div className="relative hidden sm:block" ref={userMenuRef}>
+                            {isLoggedIn && user ? (
+                                <>
+                                    <button
+                                        onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                                        className="flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] hover:border-[var(--color-primary-light)] transition-all"
+                                    >
+                                        <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-light)] flex items-center justify-center text-white text-xs font-black shadow-lg shadow-green-500/10">
+                                            {user.name?.charAt(0).toUpperCase() || 'U'}
+                                        </div>
+                                        <ChevronDown size={14} className={`text-[var(--color-text-light)] transition-transform duration-300 ${isUserMenuOpen ? 'rotate-180' : ''}`} />
+                                    </button>
+
+                                    {isUserMenuOpen && (
+                                        <div className="absolute left-0 top-full mt-3 w-72 bg-[var(--color-surface)] rounded-[2rem] shadow-2xl border border-[var(--color-border)] py-3 animate-fade-in-down z-50 overflow-hidden">
+                                            <div className="px-6 py-4 bg-[var(--color-surface-alt)]/50 border-b border-[var(--color-border)] mb-2">
+                                                <p className="font-black text-sm text-[var(--color-text)] truncate">{user.name}</p>
+                                                <p className="text-xs text-[var(--color-text-light)] truncate font-medium">{user.email}</p>
+                                            </div>
+
+                                            <div className="px-2 space-y-1">
+                                                <Link
+                                                    href="/profile"
+                                                    onClick={() => setIsUserMenuOpen(false)}
+                                                    className="flex items-center gap-3 px-4 py-3 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-alt)] rounded-2xl transition-all font-bold"
+                                                >
+                                                    <User size={18} className="text-[var(--color-primary-light)]" /> تحديث الملف الشخصي
+                                                </Link>
+
+                                                {user.role === 'admin' ? (
+                                                    <Link
+                                                        href="/register"
+                                                        onClick={() => setIsUserMenuOpen(false)}
+                                                        className="flex items-center gap-3 px-4 py-3 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-alt)] rounded-2xl transition-all font-bold"
+                                                    >
+                                                        <Shield size={18} className="text-purple-500" /> تسجيل مشرف جديد
+                                                    </Link>
+                                                ) : (
+                                                    <Link
+                                                        href="/orders"
+                                                        onClick={() => setIsUserMenuOpen(false)}
+                                                        className="flex items-center gap-3 px-4 py-3 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-alt)] rounded-2xl transition-all font-bold"
+                                                    >
+                                                        <Package size={18} className="text-[var(--color-primary-light)]" /> طلباتي
+                                                    </Link>
+                                                )}
+                                            </div>
+
+                                            <div className="border-t border-[var(--color-border)] mt-2 pt-2 px-2">
+                                                <button
+                                                    onClick={() => {
+                                                        setIsUserMenuOpen(false);
+                                                        logout();
+                                                    }}
+                                                    className="flex items-center gap-3 px-4 py-3 text-sm text-red-500 hover:bg-red-500/5 rounded-2xl w-full transition-all font-black"
+                                                >
+                                                    <LogOut size={18} /> تسجيل الخروج
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
+                            ) : (
+                                <Link href="/login" className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-light)] text-white rounded-2xl text-sm font-black hover:shadow-xl hover:shadow-green-500/20 transition-all">
+                                    <User size={18} />
+                                    دخول
+                                </Link>
+                            )}
+                        </div>
+
+                        <button
+                            className="lg:hidden p-2.5 text-[var(--color-text)] hover:bg-[var(--color-surface-alt)] rounded-xl transition-colors"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        >
+                            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
                     </div>
-
-                    <button
-                        className="lg:hidden p-2.5 text-[var(--color-text)] hover:bg-[var(--color-surface-alt)] rounded-xl transition-colors"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
                 </div>
-            </div>
+            </header>
 
-            {/* MOBILE MENU */}
+            {/* MOBILE MENU - Rendered outside header to avoid clipping/overflow issues */}
             {isMenuOpen && (
-                <div className="fixed inset-0 top-[80px] bg-[var(--color-surface)] z-50 overflow-y-auto pb-10 flex flex-col animate-fade-in transition-colors duration-300">
+                <div className="fixed inset-0 top-[80px] bg-[var(--color-surface)] z-[60] overflow-y-auto pb-10 flex flex-col animate-fade-in transition-colors duration-300 lg:hidden">
                     <div className="p-4 space-y-2">
                         {links.map((link) => (
                             <Link
@@ -286,6 +300,6 @@ export default function Header() {
                     </div>
                 </div>
             )}
-        </header>
+        </>
     );
 }
